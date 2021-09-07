@@ -31,7 +31,9 @@ export class PartidasController {
             );
             if (filterAckError.length > 0) {
                 await channel.ack(originalMsg);
+                return
             }
+            await channel.nack(originalMsg)
         }
 
     }
